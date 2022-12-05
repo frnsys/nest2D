@@ -68,7 +68,12 @@ PYBIND11_MODULE(nest2D, m)
                  return r;
              }
         )
-        ;
+        .def("transformed_shape",
+             [](const Item &i) {
+                auto polygon = i.transformedShape();
+                return polygon.Contour;
+             }
+        );
 
     // The nest function takes two parameters input and box
     // see lib/libnest2d/include/libnest2d/libnest2d.hpp
